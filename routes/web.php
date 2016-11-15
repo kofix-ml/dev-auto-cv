@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index');
 */
 
 Route::get('/resume/keep', 'ResumeBuilderController@index');
-Route::post('/resume/keep', 'ResumeBuilderController@index');
+Route::post('/resume/keep', 'ResumeBuilderController@store');
 
 
 
