@@ -8,15 +8,27 @@ use Illuminate\Http\Request;
 
 class ResumeFetchController extends Controller
 {
+
+	/*
+	*
+	*	Changes for below
+	*	Description 	: Adding auth for API	
+	*	Last edited by 	: Firdausneonexxa
+	*
+	*/
+		
     public function Userdata(Request $request)
     {
-    	$data = u_detail::all();
-    	$user = User::all();
 
-		$test1 = json_decode($data);
-		$test2 = json_decode($user);
-
-			dd($test1,$test2);
+    	if(!isset($request->access)){
+    		return view('errors.lessparameter');
+    	}else{
+    		$data = u_detail::all();
+    		$user = User::all();
+			$test1 = json_decode($data);
+			$test2 = json_decode($user);
+			return $test2;
+    	}	
     }
 
     /*

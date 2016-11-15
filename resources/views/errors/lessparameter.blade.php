@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back. Go grab some bites.</div>
+                <div class="title">Oppss !!! Make sure you bring all your chips here .. </div>
             </div>
         </div>
     </body>
