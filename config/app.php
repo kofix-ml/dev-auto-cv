@@ -186,7 +186,8 @@ return [
         *
         */
         
-        Collective\Html\HtmlServiceProvider::class,  
+        Collective\Html\HtmlServiceProvider::class,
+        App\Providers\FormServiceProvider::class,  
 
     ],
 

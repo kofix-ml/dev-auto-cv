@@ -2,6 +2,18 @@
 
 /*
 |--------------------------------------------------------------------------
+| Routes For Test
+|--------------------------------------------------------------------------
+|
+| No description
+|
+*/
+	
+Route::get('/test','HomeController@test');
+
+
+/*
+|--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -10,7 +22,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resource('profile','UserController');
 //Route::get('/', function () {
 //    return view('welcome');
 //});
@@ -46,5 +58,5 @@ Route::post('/resume/keep', 'ResumeBuilderController@store');
 | Here is where you can register what data to fetch by GET request. 
 |
 */
-Route::get('/resume/data', 'ResumeFetchController@Userdata');
+Route::get('/resume/data/{token}', 'ResumeFetchController@Userdata');
 

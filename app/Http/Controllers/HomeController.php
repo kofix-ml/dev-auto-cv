@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Form;
+use Html;
+
+use App\User;
+use App\u_detail;
+
 
 class HomeController extends Controller
 {
@@ -24,5 +30,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /*
+    *
+    *    Changes for below
+    *    Description : Test
+    *    Last edited by : Firdausneonexxa
+    *
+    */
+    
+    public function test()
+    {
+        $user = User::all();
+        //$test = Form::component('bsText', 'components.form.text', ['name', 'value' => null, 'attributes' => []]);
+        return view('profile.formdata',compact("user"));
     }
 }
