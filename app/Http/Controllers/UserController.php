@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\u_detail;
+use Form;
+use Html;
+use Input;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -50,8 +56,13 @@ class UserController extends Controller
 	*
 	*/
 	
-	public function update (Request $request){
-	    $parameters = $request->all();
+	public function update ($id){
+	    $profile = User::findOrFail($id);
+	    $profile->fill(Input::all());
+	    $profile->save();
+
+	    return redirect('');
+	    //return redirect('/'.$id.'/haha');
 	}
 	
 	/*
@@ -86,8 +97,11 @@ class UserController extends Controller
 	*
 	*/
 	
-	public function edit (Request $request){
-	    $parameters = $request->all();
+	public function edit ($id){
+		$profile = User::findOrFail($id);
+
+		return view('profile.edit',compact('profile'));
+	    //$parameters = $request->all();
 	}
 		
 }
