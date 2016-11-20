@@ -22,17 +22,33 @@
 
 <div class="container">
     		
-    {!! Form::model($profile, ['method'=>'PATCH', 'route'=>['profile.update',$profile->id], 'class'=>'pure-form pure-form-aligned']) !!}
+    {!! Form::model($profile, ['method'=>'PATCH', 'route'=>['profile.update',$id], 'class'=>'pure-form pure-form-aligned']) !!}
 
         <div class="pure-control-group">
-            {{ Form::label('username','Username') }}
+            {{ Form::label('username','Name on resume') }}
             {{ Form::text('name', null, array('class'=>'pure-u-16-24', 'id'=>'haha')) }}
         </div>
         <div class="pure-control-group">
-            {{ Form::label('email','Email') }}
-            {{ Form::text('email', null, array('class'=>'pure-u-16-24', 'id'=>'haha')) }}
+            {{ Form::label('age','Age') }}
+            {{ Form::text('age', null, array('class'=>'pure-u-16-24', 'id'=>'haha')) }}
         </div>
-	{{  Form::button('<i class="glyphicon glyphicon-delete"></i>Click Me!!', array('type' => 'submit', 'class' => 'button-success pure-button')) }}
+        <div class="pure-control-group">
+            {{ Form::label('id','ID') }}
+            {{ Form::text('id', null, array('class'=>'pure-u-16-24', 'id'=>'haha')) }}
+        </div>
+        <div class="pure-control-group">
+            {{ Form::label('nric','NRIC') }}
+            {{ Form::text('nric', null, array('class'=>'pure-u-16-24', 'id'=>'haha')) }}
+        </div>
+        <div class="pure-control-group">
+            {{ Form::label('institution','University') }}
+            {{ Form::text('institution', null, array('class'=>'pure-u-16-24', 'id'=>'haha')) }}
+        </div>
+        <div class="pure-control-group">
+            {{  Form::button('<i class="glyphicon glyphicon-delete"></i>Click Me!!', array('type' => 'submit', 'class' => 'button-success pure-button pure-u-1 center')) }}
+        </div>
+
+	
     {!! Form::close() !!}
     	
 

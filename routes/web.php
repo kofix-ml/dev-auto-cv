@@ -9,12 +9,12 @@
 |
 */
 	
-Route::get('/test','HomeController@test');
+Route::get('/homeutest','HomeController@test');
 
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes (last edited : neonexxa)
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -22,33 +22,42 @@ Route::get('/test','HomeController@test');
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('profile','UserController');
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-Route::get('/', function(){
-	return view('gallery');
+Route::resource('/profile','UserController');
+
+
+
+Route::get('/', function () {
+    return view('errors.503');
+});
+Route::get('/home', function () {
+    return view('errors.503');
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+/*
+|--------------------------------------------------------------------------
+| Routes For Home (last edited : neonexxa)
+|--------------------------------------------------------------------------
+|
+| No description
+|
+*/
+	
+//Route::get('/home', 'HomeController@index');
 
 
 /*
 |--------------------------------------------------------------------------
-| Routes For Back End Interaction with mongod
+| Routes For Back End Interaction with mongod (last edited : neonexxa)
 |--------------------------------------------------------------------------
 |
 | Here is where you can register what data to keep in DB. 
 |
 */
 
-Route::get('/resume/keep', 'ResumeBuilderController@index');
-Route::post('/resume/keep', 'ResumeBuilderController@store');
-
-
+Route::resource('/resume','ResumeBuilderController');
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +69,13 @@ Route::post('/resume/keep', 'ResumeBuilderController@store');
 */
 Route::get('/resume/data/{token}', 'ResumeFetchController@Userdata');
 
+/*
+|--------------------------------------------------------------------------
+| Routes For Test
+|--------------------------------------------------------------------------
+|
+| No description
+|
+*/
+	
+Route::resource('/test','TestController');

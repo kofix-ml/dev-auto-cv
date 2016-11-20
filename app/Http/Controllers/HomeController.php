@@ -10,6 +10,7 @@ use App\User;
 use App\u_detail;
 
 
+
 class HomeController extends Controller
 {
     /**

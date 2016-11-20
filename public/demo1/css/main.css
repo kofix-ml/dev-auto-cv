@@ -1,0 +1,25 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@import url('http://getbootstrap.com/dist/css/bootstrap.css');
+
+.fixed { height:1080px; overflow:hidden; background:#ff7973; }
+.scrollit { height:1080px; overflow-y:scroll; background:white; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
