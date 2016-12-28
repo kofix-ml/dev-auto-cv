@@ -8,20 +8,18 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                {{ dd($input1) }}
-                	@foreach ($userdata as $key => $value)
-                		@if ($key != "_id") 
                 			<div class="row">
 	                			<div class="container">
 	                				<h4>
-	                					{{ $key }}
+	                					NAME :
 	                				</h4>
 	                			</div>
                 			</div>
-                			<div class="row">{{ $value }}</div>
-                		@endif
-                	@endforeach
-                		
+                			<div class="row">
+                                <div class="container">
+                                    {{ Form::text('name', $profile->name, array('class'=>'pure-u-16-24', 'id'=>'haha', 'disabled')) }}
+                                </div>
+                            </div>
                 	
                     {!! Form::open(['method'=>'GET','route'=>['profile.edit',$id]]) !!}
 					    {{  Form::button('<i class="glyphicon glyphicon-delete"></i>Edit My Resume!!', array('type' => 'submit', 'class' => 'button-success pure-button pure-u-1 center')) }}

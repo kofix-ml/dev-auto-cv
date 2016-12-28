@@ -11,6 +11,7 @@ use Input;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
 {
@@ -24,16 +25,19 @@ class UserController extends Controller
 	    
 	public function index (){
 		$id = Auth::id();
-		$profile = u_detail::findOrFail($id);
-		$userdata = $profile['attributes'];
-		$input1 = array('I',[0x6165300e,0x87a79a55,0xf7c60bd0,0x34febd0b,0x6503cf04,0x854f709e,0xfb0fc034,0x874c9c65,0x2f94cc40,0x15a12deb,0x5c15f4a3,0x490786bb,0x6d658673,0xa4341f7d,0x8fd75920,0xefd18d5a]);
-		//$input2 = array('I',
-		//	[x^y for x,y in zip($input1,
-		//		[0,0,0,0,0,1<<10,0,0,0,0,1<<31,0,0,0,0,0]
-		//		)
-		//	]);
+		// Will return a ModelNotFoundException if no user with that id
+		try
+		{
+		    $profile = u_detail::findOrFail($id);
+		}
+		// catch(Exception $profile) catch any exception
+		catch(ModelNotFoundException $profile)
+		{
+		    return view('profile.create',compact('id'));
+		}
 
-	    return view('profile.userprofile',compact('profile','userdata','id','input1'));
+		$userdata = $profile['attributes'];
+	    return view('profile.userprofile',compact('profile','id','userdata'));
 	}
 	
 	/*
@@ -45,7 +49,12 @@ class UserController extends Controller
 	*/
 	
 	public function store (Request $request){
-	    $parameters = $request->all();
+		$input = $request;
+	    u_detail::create($input);
+
+        //dd($request->get('name'));
+
+	    return redirect('/profile');
 	}
 	
 	/*
@@ -56,8 +65,8 @@ class UserController extends Controller
 	*
 	*/
 	
-	public function create (Request $request){
-	    $parameters = $request->all();
+	public function create ($id){
+		dd("this is create");
 	}
 	
 	/*
@@ -98,7 +107,6 @@ class UserController extends Controller
 	*/
 	
 	public function show ($id){
-
 		$profile = u_detail::findOrFail($id);
 	    return view('profile.userprofile',compact('profile'));
 	}

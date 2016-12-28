@@ -24,15 +24,13 @@ Route::get('/homeutest','HomeController@test');
 */
 Route::resource('/profile','UserController');
 
-
-
 Route::get('/', function () {
     return view('errors.503');
 });
+
 Route::get('/home', function () {
     return view('errors.503');
 });
-
 
 Auth::routes();
 
